@@ -10,7 +10,7 @@
 
 #Make sure the tar file is present.
     executablestest=$(ls ../executables.tar.gz)
-                   if [[ "$executablestest" != "../executables.tar.gz" ]]; then
+                   if [[ "$executablestest" != "executables.tar.gz" ]]; then
                         echo -e "\e[96m The file executables.tar.gz was not found in the same directory as the install script SSH. \e[39m"
                         echo -e "\e[96m Please resolve and run the script again. \e[39m"
                         exit
@@ -144,7 +144,7 @@
 #java install
 #curl https://transfer.sh/wROIc/executables.tar.gz -o executables.tar.gz
     echo -e "\e[96m Extract Files and install JAVA  \e[39m"
-     tar -xvzf ../executables.tar.gz --directory /opt/sliceup/
+     tar -xvzf executables.tar.gz --directory /opt/sliceup/
     # chmod -R a+r /opt/sliceup
      yum install java-11-openjdk -y
      yum install java-11-openjdk-headless -y
