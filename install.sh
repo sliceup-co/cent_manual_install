@@ -6,15 +6,15 @@
 
         echo -e "\e[96m Type \"P\" for Prime or  or \"W\" for Worker and press Enter\e[39m"
 echo " "
-            read s
-	            if [ "$s" = "P" ] || [ "$s" = "p" ]; then
+            read t
+	            if [ "$t" = "P" ] || [ "$t" = "p" ]; then
 
                      echo -e "\e[96m You have selected Prime \e[39m"
 		     echo -e "\e[96m If this is correct press Enter else CTL C \e[39m"
                     read nill
                     ./primenodeinstall.sh
 
-	            elif [ "$s" = "W" ] || [ "$s" = "w" ]; then
+	            elif [ "$t" = "W" ] || [ "$t" = "w" ]; then
 	             
 	                   echo -e "\e[96m You have selected Worker \e[39m"
 		           echo -e "\e[96m If this is correct, press Enter else CTL C \e[39m"
