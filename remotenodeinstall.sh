@@ -50,8 +50,8 @@ read address
      yum groupinstall 'Development Tools' -y
      yum install PyOpenGL libtool autoconf pkgconfig python-pillow qt-devel python-tools python-pyside python2-pyside python36-pyside qt4-devel PyQt4-devel qt-x11 -y
      yum install python3-pip -y
-     python3 -m pip install requests 
-     python3 -m pip install selenium 
+     python3 -m pip install requests 2>/dev/null
+     python3 -m pip install selenium 2>/dev/null
 
 
      mv workerstart.sh /opt/sliceup/scripts/workerstart.sh
