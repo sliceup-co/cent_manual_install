@@ -208,10 +208,10 @@ echo -e "\e[96m Config Postgres.  \e[39m"
 
 
 su - postgres <<-'EOF'
-     postgres psql -c "CREATE USER sliceup WITH PASSWORD '$psqlpass';"
-     postgres psql -c "ALTER ROLE sliceup WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN NOREPLICATION NOBYPASSRLS;"
-     postgres psql -c "CREATE DATABASE sliceup"
-     postgres psql sliceup < /opt/sliceup/executables/db_migration/sourcedb.sql
+     psql -c "CREATE USER sliceup WITH PASSWORD '$psqlpass';"
+     psql -c "ALTER ROLE sliceup WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN NOREPLICATION NOBYPASSRLS;"
+     psql -c "CREATE DATABASE sliceup"
+     psql sliceup < /opt/sliceup/executables/db_migration/sourcedb.sql
 EOF
 
 
