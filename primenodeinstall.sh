@@ -21,7 +21,8 @@
     echo -e "\e[96m Please choose and enter the password for the database. \e[39m"
     read psqlpass
 
-
+#set Env varible for postgres
+export PSQLPASSENV="$psqlpass"
 # Determine storage mount to be used for Database
 
 
@@ -208,7 +209,7 @@ echo -e "\e[96m Config Postgres.  \e[39m"
 
 
 su - postgres <<-'EOF'
-     psql -c "CREATE USER sliceup WITH PASSWORD '$psqlpass';"
+     psql -c "CREATE USER sliceup WITH PASSWORD '$PSQLPASSENV';"
      psql -c "ALTER ROLE sliceup WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN NOREPLICATION NOBYPASSRLS;"
      psql -c "CREATE DATABASE sliceup"
      psql sliceup < /opt/sliceup/executables/db_migration/sourcedb.sql
