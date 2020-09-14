@@ -59,9 +59,7 @@ read address
      chmod +x /opt/sliceup/scripts/workerstart.sh
      mv sliceworker.service /etc/systemd/system/sliceworker.service
 
-#Enable service at start
-    echo -e "\e[96m Enabling StartUp service  \e[39m"
-    systemctl enable sliceworker
+
 
 #Inside each of the worker Nodes
     echo -e "\e[96m Replacing Variable Options  \e[39m"
@@ -81,6 +79,12 @@ sed -i "s/{MASTER_IP}/$masterip/g" /opt/sliceup/executables/conf.ini
 
 
 sed -i "s/{WORKER_IP}/$address/g" /opt/sliceup/executables/conf.ini
+
+
+
+#Enable service at start
+    echo -e "\e[96m Enabling StartUp service  \e[39m"
+    systemctl enable sliceworker
  
 
 systemctl start sliceworker.service
