@@ -202,11 +202,18 @@
     sleep 10
 
 #create variable requires config for sliceupdev
-    echo -e "\e[96m Config Postgres.  \e[39m"
-     -i -u postgres psql -c "CREATE USER sliceup WITH PASSWORD '$psqlpass';"
-     -i -u postgres psql -c "ALTER ROLE sliceup WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN NOREPLICATION NOBYPASSRLS;"
-     -i -u postgres psql -c "CREATE DATABASE sliceup"
-     -i -u postgres psql sliceup < /opt/sliceup/executables/db_migration/sourcedb.sql
+
+
+echo -e "\e[96m Config Postgres.  \e[39m"
+
+
+su - postgres <<-'EOF'
+     postgres psql -c "CREATE USER sliceup WITH PASSWORD '$psqlpass';"
+     postgres psql -c "ALTER ROLE sliceup WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN NOREPLICATION NOBYPASSRLS;"
+     postgres psql -c "CREATE DATABASE sliceup"
+     postgres psql sliceup < /opt/sliceup/executables/db_migration/sourcedb.sql
+EOF
+
 
 #Lock this down and standardize install
 
