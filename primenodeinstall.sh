@@ -244,11 +244,11 @@ EOF
      yum install PyOpenGL libtool autoconf pkgconfig python-pillow qt-devel python-tools python-pyside python2-pyside python36-pyside qt4-devel PyQt4-devel qt-x11 -y
     # apt-get install build-essential autoconf libtool pkg-config python-opengl python-pil python-pyrex python-pyside.qtopengl idle-python2.7 qt4-dev-tools qt4-designer libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4 python-qt4-gl libgle3 python-dev -y
      yum install python3-pip -y
-     python3 -m pip install psycopg2
-     python3 -m pip install requests
-     python3 -m pip install PrettyTable
-     python3 -m pip install selenium
-     python3 -m pip install kafka-python
+     python3 -m pip install psycopg2 2>/dev/null
+     python3 -m pip install requests 2>/dev/null
+     python3 -m pip install PrettyTable 2>/dev/null
+     python3 -m pip install selenium 2>/dev/null
+     python3 -m pip install kafka-python 2>/dev/null
 
 
     echo -e "\e[96m Replace variable information in configs  \e[39m"
