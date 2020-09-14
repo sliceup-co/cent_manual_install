@@ -9,7 +9,7 @@
     read y 
 
 #Make sure the tar file is present.
-    executablestest=$(ls ../executables.tar.gz)
+    executablestest=$(ls executables.tar.gz)
                    if [[ "$executablestest" != "executables.tar.gz" ]]; then
                         echo -e "\e[96m The file executables.tar.gz was not found in the same directory as the install script SSH. \e[39m"
                         echo -e "\e[96m Please resolve and run the script again. \e[39m"
