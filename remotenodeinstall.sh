@@ -4,8 +4,8 @@
 
 
 #Make sure the tar file is present.
-    executablestest=$(ls ../executables.tar.gz)
-                   if [[ "$executablestest" != "../executables.tar.gz" ]]; then
+    executablestest=$(ls executables.tar.gz)
+                   if [[ "$executablestest" != "executables.tar.gz" ]]; then
                         echo -e "\e[96m The file executables.tar.gz was not found in the same directory as the install script SSH. \e[39m"
                         echo -e "\e[96m Please resolve and run the script again. \e[39m"
                         exit
@@ -37,7 +37,7 @@ read address
 
 
     echo -e "\e[96m Extracting Files and Installing Java  \e[39m"
-     tar -xvzf ../executables.tar.gz --directory /opt/sliceup/
+     tar -xvzf executables.tar.gz --directory /opt/sliceup/
      mkdir /opt/sliceup/scripts
      chmod -R a+r /opt/sliceup
      cuser=$(whoami)
@@ -74,13 +74,13 @@ read address
 
 #####AFter Remote Run
 	    
-sed -i 's/{MASTER_IP}/$masterip/g' /opt/sliceup/executables/flink-1.10.0/conf/flink-conf.yaml
+sed -i "s/{MASTER_IP}/$masterip/g" /opt/sliceup/executables/flink-1.10.0/conf/flink-conf.yaml
 
 
-sed -i 's/{MASTER_IP}/$masterip/g' /opt/sliceup/executables/conf.ini
+sed -i "s/{MASTER_IP}/$masterip/g" /opt/sliceup/executables/conf.ini
 
 
-sed -i 's/{WORKER_IP}/$address/g' /opt/sliceup/executables/conf.ini
+sed -i "s/{WORKER_IP}/$address/g" /opt/sliceup/executables/conf.ini
  
 
 systemctl start sliceworker.service
