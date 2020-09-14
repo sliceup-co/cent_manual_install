@@ -20,9 +20,9 @@
 #Get password for postgres
     echo -e "\e[96m Please choose and enter the password for the database. \e[39m"
     read psqlpass
+	
+	echo $psqlpass > /tmp/pgxpass
 
-#set Env varible for postgres
-export PSQLPASSENV="$psqlpass"
 # Determine storage mount to be used for Database
 
 
@@ -209,7 +209,8 @@ echo -e "\e[96m Config Postgres.  \e[39m"
 
 
 su - postgres <<-'EOF'
-     psql -c "CREATE USER sliceup WITH PASSWORD '$PSQLPASSENV';"
+     pgxpass=$(cat /tmp/pgxpass)
+     psql -c "CREATE USER sliceup WITH PASSWORD '$pgxpass';"
      psql -c "ALTER ROLE sliceup WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN NOREPLICATION NOBYPASSRLS;"
      psql -c "CREATE DATABASE sliceup"
      psql sliceup < /opt/sliceup/executables/db_migration/sourcedb.sql
@@ -378,3 +379,7 @@ EOF
     echo -e "\e[96m Start SlicePrime service  \e[39m"
      systemctl start slicemaster
     echo -e "\e[96m SlicePrime service started. \e[39m"
+
+#remove tmp file
+	rm -f /tmp/pgxpass
+	
